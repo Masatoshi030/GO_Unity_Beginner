@@ -13,6 +13,8 @@ public class CubeScript : MonoBehaviour
 
     public Transform StartPoint;
 
+    public bool OnGround = false;
+
     // 旗が押されたら
     void Start()
     {
@@ -38,13 +40,34 @@ public class CubeScript : MonoBehaviour
         //ジャンプ処理
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            MyRigidbody.velocity = Vector3.up * JumpPower;
+            //地面にいれば
+            if (OnGround == true)
+            {
+                //ジャンプ
+                MyRigidbody.velocity = Vector3.up * JumpPower;
+            }
         }
 
         //落ちたら戻る処理
         if(transform.position.y < -5.0f)
         {
             transform.position = StartPoint.position;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            OnGround = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            OnGround = false;
         }
     }
 }
