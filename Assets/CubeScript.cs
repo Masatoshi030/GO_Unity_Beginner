@@ -11,6 +11,8 @@ public class CubeScript : MonoBehaviour
 
     Rigidbody MyRigidbody;
 
+    public Transform StartPoint;
+
     // Šø‚ª‰Ÿ‚³‚ê‚½‚ç
     void Start()
     {
@@ -37,6 +39,12 @@ public class CubeScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             MyRigidbody.velocity = Vector3.up * JumpPower;
+        }
+
+        //—‚¿‚½‚ç–ß‚éˆ—
+        if(transform.position.y < -5.0f)
+        {
+            transform.position = StartPoint.position;
         }
     }
 }
