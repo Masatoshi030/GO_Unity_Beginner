@@ -7,9 +7,15 @@ public class CubeScript : MonoBehaviour
 
     public float MoveSpeed = 0.03f;
 
+    public float JumpPower = 7.0f;
+
+    Rigidbody MyRigidbody;
+
     // 旗が押されたら
     void Start()
     {
+        //自分自身のオブジェクトにあるRigidbodyを取得
+        MyRigidbody = this.GetComponent<Rigidbody>();
 
     }
 
@@ -25,6 +31,12 @@ public class CubeScript : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(-MoveSpeed, 0.0f, 0.0f);
+        }
+
+        //ジャンプ処理
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            MyRigidbody.velocity = Vector3.up * JumpPower;
         }
     }
 }
