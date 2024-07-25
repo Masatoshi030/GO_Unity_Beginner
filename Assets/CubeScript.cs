@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class CubeScript : MonoBehaviour
 {
@@ -14,6 +16,10 @@ public class CubeScript : MonoBehaviour
     public Transform StartPoint;
 
     public bool OnGround = false;
+
+    public int ItemCounter = 0;
+
+    public TextMeshProUGUI ItemCounter_Text;
 
     // 旗が押されたら
     void Start()
@@ -64,7 +70,14 @@ public class CubeScript : MonoBehaviour
 
         if(collision.gameObject.tag == "Item")
         {
+            //オブジェクト削除
             Destroy(collision.gameObject);
+
+            //アイテムカウンターアップ
+            ItemCounter += 1;
+
+            //アイテムカウンターに反映
+            ItemCounter_Text.text = ItemCounter.ToString();
         }
     }
 
