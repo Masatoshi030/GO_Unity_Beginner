@@ -13,6 +13,16 @@ public class CubeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0.003f, 0.0f, 0.0f);
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            //ここに前回 No.1で使ったX軸に移動するプログラムを書こう！
+            transform.Translate(0.003f, 0.0f, 0.0f);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            //ここに前回 No.1で使ったX軸に移動するプログラムを書こう！
+            transform.Translate(-0.003f, 0.0f, 0.0f);
+        }
     }
 }
