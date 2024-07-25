@@ -61,6 +61,11 @@ public class CubeScript : MonoBehaviour
         {
             OnGround = true;
         }
+
+        if(collision.gameObject.tag == "Item")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionExit(Collision collision)
