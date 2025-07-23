@@ -21,11 +21,16 @@ public class CubeScript : MonoBehaviour
 
     public TextMeshProUGUI ItemCounter_Text;
 
+    AudioSource MyAudioSource;
+
     // 旗が押されたら
     void Start()
     {
         //自分自身のオブジェクトにあるRigidbodyを取得
         MyRigidbody = this.GetComponent<Rigidbody>();
+
+        //自分自身のオブジェクトにあるAudioSourceを取得
+        MyAudioSource = this.GetComponent<AudioSource>();
 
     }
 
@@ -78,6 +83,9 @@ public class CubeScript : MonoBehaviour
 
             //アイテムカウンターに反映
             ItemCounter_Text.text = ItemCounter.ToString();
+
+            //アイテム取得音を鳴らす
+            MyAudioSource.PlayOneShot(MyAudioSource.clip);
         }
     }
 
